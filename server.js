@@ -6,16 +6,25 @@ var init = require('./config/init')(),
 	config = require('./config/config'),
 	mongoose = require('mongoose'),
 	chalk = require('chalk'),
-	blockchain = require('blockchain.info');
-	console.log('tryna figure out dis blockchain shit');
-	console.log('tyrone thing' + blockchain.blockexplorer.getBlock('00000000000000000174216a0b453298d9a8bfc489f69c2356bc0f8d51d17157').then(function(result){
-		console.log('SUCCESS-----------------------------------');
-		for(var i = 0; i < result.tx.length; i++){
-			console.log(result.tx[i].relayed_by);
-		}
-	}, function(err){
-		console.log(err);
-	}));
+	Socket = require('blockchain.info/socket');
+
+	var mySocket = new Socket();
+
+	// console.log('tryna figure out dis blockchain shit');
+	// console.log('tyrone thing' + blockchain.blockexplorer.getBlock('00000000000000000174216a0b453298d9a8bfc489f69c2356bc0f8d51d17157').then(function(result){
+	// 	console.log('SUCCESS-----------------------------------');
+	// 	for(var i = 0; i < result.tx.length; i++){
+	// 		console.log(result.tx[i].relayed_by);
+	// 	}
+	// }, function(err){
+	// 	console.log(err);
+	// }));
+
+	console.log('SOCKET STUFF------------')
+	mySocket.onTransaction(function(result){
+		console.log(result.hash + ' this was socket stuff')
+		console.log(result.relayed_by)
+	});
 
 /**
  * Main application entry file.
