@@ -1,12 +1,12 @@
-'use strict';
-/**
- * Module dependencies.
- */
-var init = require('./config/init')(),
-	config = require('./config/config'),
-	mongoose = require('mongoose'),
-	chalk = require('chalk'),
-	Socket = require('blockchain.info/socket');
+// server.js
+
+// modules =================================================
+var express        = require('express');
+var app            = express();
+var bodyParser     = require('body-parser');
+var methodOverride = require('method-override');
+
+Socket = require('blockchain.info/socket');
 
 	var mySocket = new Socket();
 
@@ -26,30 +26,44 @@ var init = require('./config/init')(),
 		console.log(result.relayed_by)
 	});
 
-/**
- * Main application entry file.
- * Please note that the order of loading is important.
- */
 
-// Bootstrap db connection
-var db = mongoose.connect(config.db, function(err) {
-	if (err) {
-		console.error(chalk.red('Could not connect to MongoDB!'));
-		console.log(chalk.red(err));
-	}
-});
+// configuration ===========================================
+    
+// config files
+var db = require('./config/db');
 
-// Init the express application
-var app = require('./config/express')(db);
+// set our port
+var port = process.env.PORT || 8080; 
 
-// Bootstrap passport config
-require('./config/passport')();
+// connect to our mongoDB database 
+// (uncomment after you enter in your own credentials in config/db.js)
+// mongoose.connect(db.url); 
 
-// Start the app by listening on <port>
-app.listen(config.port);
+// get all data/stuff of the body (POST) parameters
+// parse application/json 
+app.use(bodyParser.json()); 
 
-// Expose app
-exports = module.exports = app;
+// parse application/vnd.api+json as json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
 
-// Logging initialization
-console.log('MEAN.JS application started on port ' + config.port);
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+app.use(methodOverride('X-HTTP-Method-Override')); 
+
+// set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/public')); 
+
+// routes ==================================================
+require('./app/routes')(app); // configure our routes
+
+// start app ===============================================
+// startup our app at http://localhost:8080
+app.listen(port);               
+
+// shoutout to the user                     
+console.log('Magic happens on port ' + port);
+
+// expose app           
+exports = module.exports = app;     

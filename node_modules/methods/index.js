@@ -1,7 +1,6 @@
 
 var http = require('http');
 
-/* istanbul ignore next: implementation differs on version */
 if (http.METHODS) {
 
   module.exports = http.METHODS.map(function(method){
@@ -35,8 +34,7 @@ if (http.METHODS) {
     'subscribe',
     'unsubscribe',
     'patch',
-    'search',
-    'connect'
+    'search'
   ];
 
 }
