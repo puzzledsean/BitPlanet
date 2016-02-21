@@ -1,3 +1,3 @@
 # BitPlanet
 
-A visualization of Bitcoin exchanges that utilizes the Blockchain API.
+Data visualization of Bitcoin transactions built with Blockchain API
