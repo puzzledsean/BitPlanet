@@ -1,12 +1,17 @@
 var express = require('express');
 var app = express();
 
+
+// used to run app locally or via Heroku
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
+
+// ejs is used as a templating system to reduce the number of
+// lines of HTML that have to be written
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
