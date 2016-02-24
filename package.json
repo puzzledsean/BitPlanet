@@ -1,12 +1,28 @@
 {
-  "name": "starter-node-angular",
-  "main": "server.js",
+  "name": "node-js-getting-started",
+  "version": "0.1.5",
+  "description": "A sample Node.js app using Express 4",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
-    "blockchain.info": "^2.2.0",
-    "body-parser": "~1.4.2",
-    "express": "~4.5.1",
-    "method-override": "~2.0.2",
-    "mongoose": "~3.8.0",
-    "socket.io": "~0.9.6"
-  }
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "socket.io": "~0.9.6",
+    "blockchain.info": "^2.2.0"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puzzledsean/BitPlanet"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
