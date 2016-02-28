@@ -1,9 +1,17 @@
-var xhr = new XMLHttpRequest();
+function retrieveTransactionData() {
 
-xhr.open("GET", "transactions?t=" + Math.random(), false);
+  var xhr = new XMLHttpRequest();
 
-xhr.send();
+  xhr.open("GET", "transactions?t=" + Math.random(), false);
+  xhr.send();
 
-console.log(xhr.status);
+  console.log(xhr.status);
 
-document.getElementById("pings").innerHTML = xhr.responseText;
+  document.getElementById("pings").innerHTML = xhr.responseText;
+
+}
+
+$(document).ready(function() {
+  retrieveTransactionData();
+  setInterval(retrieveTransactionData, 5000);
+});
