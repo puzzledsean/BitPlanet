@@ -1,5 +1,5 @@
 .jumbotron {
-  background: #532F8C;
+  background: #1A4769;
   color: white;
   padding-bottom: 80px; }
   .jumbotron .btn-primary {
@@ -13,7 +13,7 @@
     margin: 1em auto 2em; }
   .navbar + .jumbotron {
     margin-top: -20px; }
-  .jumbotron .lang-logo {
+  .jumbotron .bc-logo {
     display: block;
     background: #B01302;
     border-radius: 50%;
@@ -22,6 +22,6 @@
     height: 100px;
     margin: auto;
     border: 2px solid white; }
-    .jumbotron .lang-logo img {
+    .jumbotron .bc-logo img {
       max-width: 100%; }
 
