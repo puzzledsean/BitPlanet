@@ -9,9 +9,7 @@
   "dependencies": {
     "ejs": "2.3.3",
     "express": "4.13.3",
-    "socket.io": "~0.9.6",
     "blockchain.info": "^2.2.0",
-    "xmldom": ""
   },
   "engines": {
     "node": "0.12.7"
